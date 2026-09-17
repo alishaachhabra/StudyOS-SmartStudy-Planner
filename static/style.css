@@ -1,0 +1,1049 @@
+/* ==========================
+   GOOGLE FONT
+========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:#f5f7fb;
+    color:#2d3748;
+
+}
+
+/* ==========================
+   DASHBOARD LAYOUT
+========================== */
+
+.dashboard{
+
+    display:flex;
+    min-height:100vh;
+
+}
+
+/* ==========================
+   SIDEBAR
+========================== */
+
+.sidebar{
+
+    width:260px;
+
+    background:#4f46e5;
+
+    color:white;
+
+    padding:30px 20px;
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    bottom:0;
+
+    overflow-y:auto;
+
+}
+
+.logo{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar ul li{
+
+    margin-bottom:15px;
+
+}
+
+.sidebar ul li a{
+
+    display:block;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+    font-size:16px;
+
+}
+
+.sidebar ul li a:hover{
+
+    background:rgba(255,255,255,.18);
+
+}
+
+.sidebar .active a{
+
+    background:white;
+
+    color:#4f46e5;
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   MAIN CONTENT
+========================== */
+
+.main-content{
+
+    margin-left:260px;
+
+    width:calc(100% - 260px);
+
+    padding:35px;
+
+}
+
+/* ==========================
+   TOPBAR
+========================== */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.topbar h1{
+
+    font-size:32px;
+
+    font-weight:700;
+
+}
+
+.welcome-text{
+
+    color:#666;
+
+    margin-top:8px;
+
+}
+
+/* ==========================
+   PROFILE ICON
+========================== */
+
+.notify{
+
+    width:55px;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:white;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.notify:hover{
+
+    transform:scale(1.08);
+
+}
+
+/* ==========================
+   MOTIVATION CARD
+========================== */
+
+.quote-card{
+
+    background:linear-gradient(135deg,#6366F1,#8B5CF6);
+
+    color:white;
+
+    padding:28px;
+
+    border-radius:18px;
+
+    box-shadow:0 15px 35px rgba(99,102,241,.25);
+
+    margin-bottom:25px;
+
+}
+
+.quote-card h2,
+.quote-card h3{
+
+    margin-bottom:15px;
+
+}
+
+.quote-card p{
+
+    line-height:1.8;
+
+}
+
+/* ==========================
+   CARD GRID
+========================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:22px;
+
+    margin-top:25px;
+
+}
+/* ==========================
+   GENERAL CARD
+========================== */
+
+.card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.card h2{
+
+    margin-bottom:20px;
+
+    color:#374151;
+
+}
+
+/* ==========================
+   DASHBOARD CARD
+========================== */
+
+.dashboard-card{
+
+    transition:.3s;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 18px 35px rgba(0,0,0,.12);
+
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.btn{
+
+    display:inline-block;
+
+    background:#4f46e5;
+
+    color:white;
+
+    text-decoration:none;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:12px 24px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:#4338ca;
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   FLOATING BUTTON
+========================== */
+
+.floating-btn{
+
+    display:inline-block;
+
+    background:#4f46e5;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:14px 22px;
+
+    border-radius:50px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    box-shadow:0 12px 25px rgba(79,70,229,.35);
+
+    transition:.3s;
+
+}
+
+.floating-btn:hover{
+
+    background:#4338ca;
+
+    transform:translateY(-3px);
+
+}
+
+/* ==========================
+   FORM
+========================== */
+
+form{
+
+    width:100%;
+
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#374151;
+
+}
+
+input[type=text],
+input[type=date],
+input[type=number],
+input[type=email],
+input[type=password],
+input[type=file],
+select,
+textarea{
+
+    width:100%;
+
+    padding:13px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:15px;
+
+    transition:.3s;
+
+    background:white;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    border-color:#4f46e5;
+
+    box-shadow:0 0 0 4px rgba(79,70,229,.12);
+
+}
+
+textarea{
+
+    resize:vertical;
+
+}
+
+/* ==========================
+   SUBJECT GRID
+========================== */
+
+.subjects-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:20px;
+
+}
+
+/* ==========================
+   SUBJECT CARD
+========================== */
+
+.subject-card{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+    background:#f9fafb;
+
+    padding:18px;
+
+    border-radius:14px;
+
+    transition:.3s;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+}
+
+.subject-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 28px rgba(0,0,0,.12);
+
+}
+
+.subject-icon{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    background:#eef2ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:28px;
+
+    flex-shrink:0;
+
+}
+
+.subject-card h3{
+
+    margin-bottom:10px;
+
+    color:#1f2937;
+
+}
+
+.subject-card p{
+
+    color:#6b7280;
+
+    line-height:1.6;
+
+}
+
+/* ==========================
+   LISTS
+========================== */
+
+ul{
+
+    padding-left:20px;
+
+}
+
+li{
+
+    margin-bottom:10px;
+
+}
+
+/* ==========================
+   TABLE
+========================== */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:20px;
+
+}
+
+table th{
+
+    background:#4f46e5;
+
+    color:white;
+
+    padding:14px;
+
+}
+
+table td{
+
+    padding:14px;
+
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+table tr:hover{
+
+    background:#f8fafc;
+
+}
+/* ==========================
+   PROGRESS BAR
+========================== */
+
+.progress{
+
+    width:100%;
+
+    height:16px;
+
+    background:#e5e7eb;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    margin:20px 0;
+
+}
+
+.progress-fill{
+
+    width:65%;
+
+    height:100%;
+
+    background:linear-gradient(90deg,#4f46e5,#8b5cf6);
+
+    border-radius:50px;
+
+    transition:width .6s ease;
+
+}
+
+/* ==========================
+   PROFILE IMAGE
+========================== */
+
+.profile-image{
+
+    width:140px;
+
+    height:140px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:5px solid #6366f1;
+
+    box-shadow:0 15px 30px rgba(99,102,241,.25);
+
+    margin-bottom:20px;
+
+}
+
+/* ==========================
+   STATUS BADGES
+========================== */
+
+.status-completed{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    background:#dcfce7;
+
+    color:#166534;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.status-pending{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    background:#fef3c7;
+
+    color:#92400e;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   PRIORITY BADGES
+========================== */
+
+.priority-high{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    background:#fee2e2;
+
+    color:#b91c1c;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}
+
+.priority-medium{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    background:#fef9c3;
+
+    color:#a16207;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}
+
+.priority-low{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#eef2ff;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#6366f1;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#4338ca;
+
+}
+
+/* ==========================
+   SMOOTH ANIMATION
+========================== */
+
+.card,
+.subject-card,
+.dashboard-card,
+.btn,
+.floating-btn{
+
+    transition:.3s ease;
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:992px){
+
+.sidebar{
+
+    width:220px;
+
+}
+
+.main-content{
+
+    margin-left:220px;
+
+    width:calc(100% - 220px);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.dashboard{
+
+    flex-direction:column;
+
+}
+
+.sidebar{
+
+    position:relative;
+
+    width:100%;
+
+    height:auto;
+
+}
+
+.main-content{
+
+    width:100%;
+
+    margin-left:0;
+
+    padding:20px;
+
+}
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+.subjects-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.topbar{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+}
+
+.notify{
+
+    align-self:flex-end;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.logo{
+
+    font-size:24px;
+
+}
+
+.topbar h1{
+
+    font-size:24px;
+
+}
+
+.btn{
+
+    width:100%;
+
+    text-align:center;
+
+}
+
+.floating-btn{
+
+    width:100%;
+
+    text-align:center;
+
+}
+
+.card{
+
+    padding:18px;
+
+}
+
+}
+
+/* ==========================
+   FOOTER SPACE
+========================== */
+
+body{
+
+    padding-bottom:30px;
+
+}
+/* ===============================
+   WELCOME PAGE
+================================ */
+
+.welcome-container{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    padding:30px;
+}
+
+.welcome-card{
+    width:700px;
+    background:white;
+    border-radius:20px;
+    padding:60px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+.welcome-card h1{
+    font-size:42px;
+    color:#4f46e5;
+    margin-bottom:20px;
+}
+
+.subtitle{
+    color:#666;
+    font-size:18px;
+    margin-top:15px;
+    line-height:1.8;
+}
+
+.buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.secondary-btn{
+    background:white;
+    color:#4f46e5;
+    border:2px solid #4f46e5;
+}
+
+.secondary-btn:hover{
+    background:#4f46e5;
+    color:white;
+}
+
+/* ===============================
+   LOGIN & SIGNUP
+================================ */
+
+.auth-container{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+}
+
+.auth-card{
+    width:430px;
+    background:white;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+.auth-card h2{
+    text-align:center;
+    color:#4f46e5;
+    margin-bottom:10px;
+}
+
+.auth-card p{
+    text-align:center;
+    color:#777;
+    margin-bottom:25px;
+}
+
+.auth-card label{
+    display:block;
+    margin-top:18px;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.auth-card input{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    margin-bottom:10px;
+}
+
+.options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:15px 0;
+    font-size:14px;
+}
+
+.options a{
+    text-decoration:none;
+    color:#4f46e5;
+}
+
+.bottom-text{
+    text-align:center;
+    margin-top:25px;
+}
+/* ==========================
+        SPLASH SCREEN
+========================== */
+
+.splash{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    text-align:center;
+}
+
+.splash h1{
+    font-size:70px;
+    font-weight:700;
+    margin-bottom:15px;
+    letter-spacing:1px;
+}
+
+.splash p{
+    font-size:24px;
+    opacity:.9;
+    margin-bottom:40px;
+}
+
+.loader{
+    width:80px;
+    height:80px;
+    border:8px solid rgba(255,255,255,.25);
+    border-top:8px solid white;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
