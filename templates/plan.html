@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Today's Study Strategy | StudyOS</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2 class="logo">StudyOS</h2>
+
+        <ul>
+
+            <li><a href="/dashboard">🏠 Dashboard</a></li>
+
+            <li><a href="/subjects">📚 Subjects</a></li>
+
+            <li><a href="/tasks">📝 Tasks</a></li>
+
+            <li class="active"><a href="/aiplanner">🧠 Study Strategist</a></li>
+
+            <li><a href="/calendar">📅 Calendar</a></li>
+
+            <li><a href="/analytics">📊 Analytics</a></li>
+
+            <li><a href="/studycoach">💡 Study Coach</a></li>
+
+            <li><a href="/profile">👤 Profile</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <h1>🧠 Your Personalized Study Strategy</h1>
+
+        </div>
+
+        <div class="quote-card">
+
+            <h2>Hello {{ user_name }} 👋</h2>
+
+            <p>
+
+                I analyzed your pending tasks and prepared the most effective study strategy based on your available study time.
+
+            </p>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card dashboard-card">
+
+                <h2>⏰ Available Time</h2>
+
+                <h1>{{ available_time }} Min</h1>
+
+            </div>
+
+            <div class="card dashboard-card">
+
+                <h2>📚 Planned Time</h2>
+
+                <h1>{{ total_time }} Min</h1>
+
+            </div>
+
+            <div class="card dashboard-card">
+
+                <h2>⌛ Remaining</h2>
+
+                <h1>{{ available_time-total_time }} Min</h1>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>📋 Recommended Study Order</h2>
+
+            {% if plan %}
+
+                {% for task in plan %}
+
+                <div class="subject-card">
+
+                    <div>
+
+                        <h2>
+
+                            {{ loop.index }}️⃣ {{ task.task_name }}
+
+                        </h2>
+
+                        <p>
+
+                            📚 Subject :
+                            {{ task.subject.subject_name }}
+
+                        </p>
+
+                        <p>
+
+                            📅 Deadline :
+                            {{ task.deadline }}
+
+                        </p>
+
+                        <p>
+
+                            ⏱ Estimated Time :
+                            {{ task.estimated_time }} Minutes
+
+                        </p>
+
+                        <p>
+
+                            ⭐ Priority :
+
+                            {% if task.importance==3 %}
+
+                                High
+
+                            {% elif task.importance==2 %}
+
+                                Medium
+
+                            {% else %}
+
+                                Low
+
+                            {% endif %}
+
+                        </p>
+
+                        <p>
+
+                            {% if task.mandatory %}
+
+                            🔥 Mandatory Task
+
+                            {% else %}
+
+                            📘 Optional Task
+
+                            {% endif %}
+
+                        </p>
+
+                        <br>
+
+                        <div style="background:#eef4ff;
+                                    padding:12px;
+                                    border-radius:10px;">
+
+                            <strong>🤖 Why is this recommended?</strong>
+
+                            <p>
+
+                                This task was selected because of its priority,
+                                deadline and estimated completion time.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <br>
+
+                {% endfor %}
+
+            {% else %}
+
+                <h2>🎉 Great Job!</h2>
+
+                <p>
+
+                    You have no pending tasks today.
+
+                </p>
+
+            {% endif %}
+
+        </div>
+
+        <div class="card">
+
+            <h2>📈 Today's Summary</h2>
+
+            <ul>
+
+                <li>✅ Focus on high-priority tasks first.</li>
+
+                <li>✅ Complete mandatory tasks before optional ones.</li>
+
+                <li>✅ Take a 10-minute break after every 50 minutes of study.</li>
+
+                <li>✅ Revise completed topics before ending today's session.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🚀 Next Step</h2>
+
+            <p>
+
+                Once you complete a task, mark it as completed from the Tasks page. StudyOS will automatically improve your future study strategies.
+
+            </p>
+
+            <br>
+
+            <a href="/tasks" class="btn">
+
+                📝 Go to Tasks
+
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

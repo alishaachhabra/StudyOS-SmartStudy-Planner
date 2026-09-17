@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Profile | StudyOS</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2 class="logo">StudyOS</h2>
+
+        <ul>
+
+            <li><a href="/dashboard">🏠 Dashboard</a></li>
+
+            <li><a href="/subjects">📚 Subjects</a></li>
+
+            <li><a href="/tasks">📝 Tasks</a></li>
+
+            <li><a href="/aiplanner">🧠 Study Strategist</a></li>
+
+            <li><a href="/calendar">📅 Calendar</a></li>
+
+            <li><a href="/analytics">📊 Analytics</a></li>
+
+            <li><a href="/studycoach">💡 Study Coach</a></li>
+
+            <li class="active">
+                <a href="/profile">👤 Profile</a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <h1>👤 My Profile</h1>
+
+        </div>
+
+        <!-- Profile Card -->
+
+        <div class="card" style="text-align:center;">
+
+            <div style="margin-bottom:20px;">
+
+                {% if user.profile_pic and user.profile_pic != "default.png" %}
+
+<img src="{{ url_for('static', filename='profile/' + user.profile_pic) }}"
+     alt="Profile Picture"
+     style="width:140px;
+            height:140px;
+            border-radius:50%;
+            object-fit:cover;
+            border:5px solid #6366F1;">
+
+{% else %}
+
+<img src="{{ url_for('static', filename='images/default_profile.png') }}"
+     alt="Profile Picture"
+     style="width:140px;
+            height:140px;
+            border-radius:50%;
+            object-fit:cover;
+            border:5px solid #6366F1;">
+
+{% endif %}
+
+            </div>
+
+            <form action="/upload_profile"
+            method="POST"
+            enctype="multipart/form-data">
+
+                <input
+                type="file"
+            name="profile_pic"
+            accept="image/*"
+            capture="environment" required>
+                <br><br>
+
+                <button class="btn">
+
+                    📷 Change Profile Picture
+
+                </button>
+
+            </form>
+
+            <br>
+
+            <h2>{{ user.name }}</h2>
+
+            <p>{{ user.email }}</p>
+
+            <p>Date of Birth : {{ user.dob }}</p>
+
+        </div>
+
+        <!-- Statistics -->
+
+        <div class="cards">
+
+            <div class="card dashboard-card">
+
+                <h2>📚 Subjects</h2>
+
+                <h1>{{ total_subjects }}</h1>
+
+            </div>
+
+            <div class="card dashboard-card">
+
+                <h2>📝 Tasks</h2>
+
+                <h1>{{ total_tasks }}</h1>
+
+            </div>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card dashboard-card">
+
+                <h2>✅ Completed</h2>
+
+                <h1>{{ completed_tasks }}</h1>
+
+            </div>
+
+            <div class="card dashboard-card">
+
+                <h2>⏳ Pending</h2>
+
+                <h1>{{ pending_tasks }}</h1>
+
+            </div>
+
+        </div>
+
+        <!-- Achievement -->
+
+        <div class="card">
+
+            <h2>🏆 Achievement</h2>
+
+            <p>
+
+                Keep completing your tasks regularly to improve your productivity and maintain your study streak.
+
+            </p>
+
+        </div>
+
+        <!-- Account -->
+
+        <div class="card">
+
+            <h2>⚙️ Account</h2>
+
+            <p>
+
+                You can update your profile information in future versions of StudyOS.
+
+            </p>
+
+            <br>
+
+            <a href="/logout" class="btn">
+
+                🚪 Logout
+
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

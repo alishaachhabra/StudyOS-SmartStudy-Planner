@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Study Strategist | StudyOS</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2 class="logo">StudyOS</h2>
+
+        <ul>
+
+            <li><a href="/dashboard">🏠 Dashboard</a></li>
+
+            <li><a href="/subjects">📚 Subjects</a></li>
+
+            <li><a href="/tasks">📝 Tasks</a></li>
+
+            <li class="active">
+                <a href="/aiplanner">🧠 Study Strategist</a>
+            </li>
+
+            <li><a href="/calendar">📅 Calendar</a></li>
+
+            <li><a href="/analytics">📊 Analytics</a></li>
+
+            <li><a href="/studycoach">💡 Study Coach</a></li>
+
+            <li><a href="/profile">👤 Profile</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <h1>🧠 Study Strategist</h1>
+
+            <p>Create a personalized study strategy for today.</p>
+
+        </div>
+
+        <!-- Welcome -->
+
+        <div class="quote-card">
+
+            <h2>Hello {{ user_name }} 👋</h2>
+
+            <p>
+
+                StudyOS will analyze your pending tasks and prepare the best study strategy based on your available time.
+
+            </p>
+
+        </div>
+
+        <!-- Planner Form -->
+
+        <div class="card">
+
+            <h2>Today's Study Preferences</h2>
+
+            <form action="/generate_plan" method="POST">
+
+                <label>⏰ Available Study Time</label>
+
+                <select name="study_time" required>
+
+                    <option value="60">1 Hour</option>
+
+                    <option value="120">2 Hours</option>
+
+                    <option value="180">3 Hours</option>
+
+                    <option value="240">4 Hours</option>
+
+                    <option value="300">5 Hours</option>
+
+                    <option value="360">6 Hours</option>
+
+                </select>
+
+                <br><br>
+
+                <label>🎯 Today's Goal</label>
+
+                <select name="goal">
+
+                    <option>Finish Urgent Tasks</option>
+
+                    <option>Balanced Study</option>
+
+                    <option>Exam Preparation</option>
+
+                    <option>Revision Only</option>
+
+                </select>
+
+                <br><br>
+
+                <label>⚡ Energy Level</label>
+
+                <select name="energy">
+
+                    <option>High</option>
+
+                    <option>Medium</option>
+
+                    <option>Low</option>
+
+                </select>
+
+                <br><br>
+
+                <button
+                    type="submit"
+                    class="btn">
+
+                    🧠 Generate Study Strategy
+
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- Information -->
+
+        <div class="card">
+
+            <h2>How StudyOS Creates Your Plan</h2>
+
+            <ul>
+
+                <li>✅ Checks task deadlines.</li>
+
+                <li>✅ Gives priority to mandatory tasks.</li>
+
+                <li>✅ Considers task importance.</li>
+
+                <li>✅ Fits tasks into your available study time.</li>
+
+                <li>✅ Generates an efficient study order.</li>
+
+            </ul>
+
+        </div>
+
+        <!-- Tip -->
+
+        <div class="card">
+
+            <h2>💡 Study Tip</h2>
+
+            <p>
+
+                The best study plans are realistic. Focus on completing a few important tasks rather than trying to finish everything in one day.
+
+            </p>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

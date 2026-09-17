@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | StudyOS</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2 class="logo">StudyOS</h2>
+
+        <ul>
+
+            <li class="active">
+                <a href="/dashboard">🏠 Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/subjects">📚 Subjects</a>
+            </li>
+
+            <li>
+                <a href="/tasks">📝 Tasks</a>
+            </li>
+
+            <li>
+                <a href="/aiplanner">🧠 Study Strategist</a>
+            </li>
+
+            <li>
+                <a href="/calendar">📅 Calendar</a>
+            </li>
+
+            <li>
+                <a href="/analytics">📊 Analytics</a>
+            </li>
+
+            <li>
+                <a href="/studycoach">💡 Study Coach</a>
+            </li>
+
+            <li>
+                <a href="/profile">👤 Profile</a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <!-- Top Bar -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>{{ greeting }}, {{ user_name }} 👋</h1>
+
+                <p class="welcome-text">
+
+                    Stay focused. Every small step takes you closer to your goals.
+
+                </p>
+
+            </div>
+
+            <button class="notify">
+
+                👤
+
+            </button>
+
+        </div>
+
+        <!-- Daily Motivation -->
+
+        <div class="quote-card">
+
+            <h3>✨ Daily Motivation</h3>
+
+            <p>{{ quote }}</p>
+
+        </div>
+
+        <!-- Today's Mission -->
+
+        <div class="card dashboard-card" style="margin-top:25px;">
+
+            <h2>🎯 Today's Mission</h2>
+
+            <p>
+
+                Let StudyOS analyze your pending work and prepare the smartest study schedule for today.
+
+            </p>
+
+            <br>
+
+            <a href="/aiplanner" class="btn">
+
+                🧠 Plan My Study Session
+
+            </a>
+
+        </div>
+
+        <!-- Upcoming Deadlines -->
+
+        <div class="card dashboard-card" style="margin-top:25px;">
+
+            <h2>🔥 Upcoming Deadlines</h2>
+
+            {% if upcoming_tasks %}
+
+                {% for task in upcoming_tasks %}
+
+                <div class="subject-card">
+
+                    <div>
+
+                        <h3>{{ task.task_name }}</h3>
+
+                        <p>
+
+                            📚 {{ task.subject.subject_name }}
+
+                        </p>
+
+                        <p>
+
+                            📅 {{ task.deadline }}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <br>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>No upcoming deadlines.</p>
+
+            {% endif %}
+
+        </div>
+
+        <!-- Progress -->
+
+        <div class="card progress-card">
+
+            <h2>📈 Today's Progress</h2>
+
+            <div class="progress">
+
+                <div class="progress-fill"></div>
+
+            </div>
+
+            <p>{{ completed_today }}% Completed</p>
+
+        </div>
+
+        <!-- Quick Add -->
+
+        <div style="text-align:right; margin-top:25px;">
+
+            <a href="/tasks" class="floating-btn">
+
+                ➕ Quick Add
+
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

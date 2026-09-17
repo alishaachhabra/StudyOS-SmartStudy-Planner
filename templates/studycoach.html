@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Study Coach | StudyOS</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2 class="logo">StudyOS</h2>
+
+        <ul>
+
+            <li>
+                <a href="/dashboard">🏠 Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/subjects">📚 Subjects</a>
+            </li>
+
+            <li>
+                <a href="/tasks">📝 Tasks</a>
+            </li>
+
+            <li>
+                <a href="/aiplanner">🧠 Study Strategist</a>
+            </li>
+
+            <li>
+                <a href="/calendar">📅 Calendar</a>
+            </li>
+
+            <li>
+                <a href="/analytics">📊 Analytics</a>
+            </li>
+
+            <li class="active">
+                <a href="/studycoach">💡 Study Coach</a>
+            </li>
+
+            <li>
+                <a href="/profile">👤 Profile</a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <h1>💡 Study Coach</h1>
+
+        </div>
+
+        <div class="quote-card">
+
+            <h2>Today's Advice</h2>
+
+            <p>
+
+                "{{ quote }}"
+
+            </p>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card dashboard-card">
+
+                <h2>🎯 Today's Goal</h2>
+
+                <p>
+
+                    Complete your highest priority tasks before starting new ones.
+
+                </p>
+
+            </div>
+
+            <div class="card dashboard-card">
+
+                <h2>📚 Study Tip</h2>
+
+                <p>
+
+                    Study for 50 minutes and take a 10-minute break to improve focus and retention.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🧠 Productivity Tips</h2>
+
+            <ul>
+
+                <li>✅ Finish mandatory tasks first.</li>
+
+                <li>✅ Avoid multitasking.</li>
+
+                <li>✅ Revise before sleeping.</li>
+
+                <li>✅ Keep your phone away while studying.</li>
+
+                <li>✅ Drink enough water during long sessions.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🚀 Recommended Action</h2>
+
+            <p>
+
+                Open the <strong>Study Strategist</strong> to generate today's personalized study plan.
+
+            </p>
+
+            <br>
+
+            <a href="/aiplanner" class="btn">
+
+                🧠 Open Study Strategist
+
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

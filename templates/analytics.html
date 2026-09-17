@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics | StudyOS</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2 class="logo">StudyOS</h2>
+
+        <ul>
+
+            <li><a href="/dashboard">🏠 Dashboard</a></li>
+
+            <li><a href="/subjects">📚 Subjects</a></li>
+
+            <li><a href="/tasks">📝 Tasks</a></li>
+
+            <li><a href="/aiplanner">🧠 Study Strategist</a></li>
+
+            <li><a href="/calendar">📅 Calendar</a></li>
+
+            <li class="active"><a href="/analytics">📊 Analytics</a></li>
+
+            <li><a href="/studycoach">💡 Study Coach</a></li>
+
+            <li><a href="/profile">👤 Profile</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <h1>📊 Analytics Dashboard</h1>
+
+            <p>Track your academic productivity.</p>
+
+        </div>
+
+        <!-- Statistics -->
+
+        <div class="cards">
+
+            <div class="card dashboard-card">
+
+                <h2>📚 Subjects</h2>
+
+                <h1>{{ total_subjects }}</h1>
+
+            </div>
+
+            <div class="card dashboard-card">
+
+                <h2>📝 Total Tasks</h2>
+
+                <h1>{{ total_tasks }}</h1>
+
+            </div>
+
+            <div class="card dashboard-card">
+
+                <h2>✅ Completed</h2>
+
+                <h1>{{ completed_tasks }}</h1>
+
+            </div>
+
+            <div class="card dashboard-card">
+
+                <h2>⏳ Pending</h2>
+
+                <h1>{{ pending_tasks }}</h1>
+
+            </div>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card dashboard-card">
+
+                <h2>🔥 High Priority</h2>
+
+                <h1>{{ high_priority }}</h1>
+
+            </div>
+
+            <div class="card dashboard-card">
+
+                <h2>📈 Completion</h2>
+
+                <h1>{{ completion }}%</h1>
+
+            </div>
+
+        </div>
+
+        <!-- Progress -->
+
+        <div class="card">
+
+            <h2>📈 Overall Progress</h2>
+
+            <div class="progress">
+
+                <div class="progress-fill"
+                     style="width: {{ completion }}%;"></div>
+
+            </div>
+
+            <br>
+
+            <h3>{{ completion }}% Completed</h3>
+
+        </div>
+
+        <!-- Summary -->
+
+        <div class="card">
+
+            <h2>🧠 Productivity Summary</h2>
+
+            <p>
+
+                You have completed
+
+                <strong>{{ completed_tasks }}</strong>
+
+                out of
+
+                <strong>{{ total_tasks }}</strong>
+
+                tasks.
+
+            </p>
+
+            <br>
+
+            <p>
+
+                {% if completion >= 80 %}
+
+                🌟 Excellent work! You're maintaining outstanding consistency.
+
+                {% elif completion >= 50 %}
+
+                👍 Good progress! Keep pushing to complete the remaining tasks.
+
+                {% else %}
+
+                🚀 Start completing your pending tasks to improve your productivity.
+
+                {% endif %}
+
+            </p>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

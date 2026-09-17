@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Tasks | StudyOS</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2 class="logo">StudyOS</h2>
+
+        <ul>
+
+            <li><a href="/dashboard">🏠 Dashboard</a></li>
+
+            <li><a href="/subjects">📚 Subjects</a></li>
+
+            <li class="active"><a href="/tasks">📝 Tasks</a></li>
+
+            <li><a href="/aiplanner">🧠 Study Strategist</a></li>
+
+            <li><a href="/calendar">📅 Calendar</a></li>
+
+            <li><a href="/analytics">📊 Analytics</a></li>
+
+            <li><a href="/studycoach">💡 Study Coach</a></li>
+
+            <li><a href="/profile">👤 Profile</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <h1>📝 Task Manager</h1>
+
+            <p>Create and manage your study tasks.</p>
+
+        </div>
+
+        <!-- Add Task -->
+
+        <div class="card">
+
+            <h2>➕ Add New Task</h2>
+
+            <form action="/add_task" method="POST">
+
+                <label>Subject</label>
+
+                <select name="subject_id" required>
+
+                    {% for subject in subjects %}
+
+                    <option value="{{ subject.id }}">
+
+                        {{ subject.subject_name }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+                <br><br>
+
+                <label>Task Name</label>
+
+                <input type="text"
+                       name="task_name"
+                       required>
+
+                <br><br>
+
+                <label>Deadline</label>
+
+                <input type="date"
+                       name="deadline"
+                       required>
+
+                <br><br>
+
+                <label>Estimated Time (Minutes)</label>
+
+                <input type="number"
+                       name="estimated_time"
+                       min="15"
+                       required>
+
+                <br><br>
+
+                <label>Importance</label>
+
+                <select name="importance">
+
+                    <option value="1">Low</option>
+
+                    <option value="2">Medium</option>
+
+                    <option value="3">High</option>
+
+                </select>
+
+                <br><br>
+
+                <label>
+
+                    <input type="checkbox"
+                           name="mandatory">
+
+                    Mandatory Task
+
+                </label>
+
+                <br><br>
+
+                <label>Notes</label>
+
+                <textarea
+                    name="notes"
+                    rows="4"
+                    placeholder="Additional notes..."></textarea>
+
+                <br><br>
+
+                <button
+                    class="btn"
+                    type="submit">
+
+                    ➕ Save Task
+
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- Task List -->
+
+        <div class="card">
+
+            <h2>📋 Your Tasks</h2>
+            {% if tasks %}
+
+<table class="task-table">
+
+    <thead>
+
+        <tr>
+
+            <th>Subject</th>
+
+            <th>Task</th>
+
+            <th>Deadline</th>
+
+            <th>Time</th>
+
+            <th>Priority</th>
+
+            <th>Status</th>
+
+            <th>Actions</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% for task in tasks %}
+
+    <tr>
+
+        <td>
+
+            {{ task.subject.subject_name }}
+
+        </td>
+
+        <td>
+
+            <strong>{{ task.task_name }}</strong>
+
+            {% if task.notes %}
+
+            <br>
+
+            <small>{{ task.notes }}</small>
+
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            {{ task.deadline }}
+
+        </td>
+
+        <td>
+
+            {{ task.estimated_time }} mins
+
+        </td>
+
+        <td>
+
+            {% if task.importance == 3 %}
+
+                <span class="priority-high">High</span>
+
+            {% elif task.importance == 2 %}
+
+                <span class="priority-medium">Medium</span>
+
+            {% else %}
+
+                <span class="priority-low">Low</span>
+
+            {% endif %}
+
+            {% if task.mandatory %}
+
+                <br>
+
+                <small>⭐ Mandatory</small>
+
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            {% if task.status == "Completed" %}
+
+                <span class="status-completed">
+
+                    Completed
+
+                </span>
+
+            {% else %}
+
+                <span class="status-pending">
+
+                    Pending
+
+                </span>
+
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            {% if task.status != "Completed" %}
+
+            <a href="/complete_task/{{ task.id }}"
+
+               class="btn">
+
+               ✅ Complete
+
+            </a>
+
+            <br><br>
+
+            {% endif %}
+
+            <a href="/delete_task/{{ task.id }}"
+
+               class="btn">
+
+               🗑 Delete
+
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% else %}
+
+<div class="card">
+
+    <h3>No Tasks Available</h3>
+
+    <p>
+
+        Create your first task to start planning your studies.
+
+    </p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<!-- Study Tip -->
+
+<div class="card">
+
+    <h2>💡 Productivity Tip</h2>
+
+    <p>
+
+        Complete your highest priority task first. StudyOS will soon use the
+        DSA-powered Priority Queue to automatically recommend the best task to
+        study next.
+
+    </p>
+
+</div>
+
+</main>
+
+</div>
+
+</body>
+
+</html>

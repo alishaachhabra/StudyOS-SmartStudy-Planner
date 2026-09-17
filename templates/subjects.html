@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Subjects | StudyOS</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2 class="logo">StudyOS</h2>
+
+        <ul>
+
+            <li><a href="/dashboard">🏠 Dashboard</a></li>
+
+            <li class="active"><a href="/subjects">📚 Subjects</a></li>
+
+            <li><a href="/tasks">📝 Tasks</a></li>
+
+            <li><a href="/aiplanner">🧠 Study Strategist</a></li>
+
+            <li><a href="/calendar">📅 Calendar</a></li>
+
+            <li><a href="/analytics">📊 Analytics</a></li>
+
+            <li><a href="/studycoach">💡 Study Coach</a></li>
+
+            <li><a href="/profile">👤 Profile</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <h1>📚 Subjects</h1>
+
+            <p>Manage all your study subjects from one place.</p>
+
+        </div>
+
+        <!-- Add Subject -->
+
+        <div class="card">
+
+            <h2>➕ Add New Subject</h2>
+
+            <form action="/add_subject" method="POST">
+
+                <input
+                    type="text"
+                    name="subject_name"
+                    placeholder="Enter Subject Name"
+                    required>
+
+                <br><br>
+
+                <button
+                    class="btn"
+                    type="submit">
+
+                    ➕ Add Subject
+
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- Subject Cards -->
+
+        <div class="card">
+
+            <h2>📖 Your Subjects</h2>
+
+            {% if subjects %}
+
+                <div class="subjects-grid">
+
+                {% for subject in subjects %}
+
+                <div class="subject-card"
+                     style="border-left:8px solid {{ subject.color }};">
+
+                    <div class="subject-icon">
+
+                        {{ subject.icon }}
+
+                    </div>
+
+                    <div>
+
+                        <h3>
+
+                            {{ subject.subject_name }}
+
+                        </h3>
+
+                        <p>
+
+                            📘 Organized Study Module
+
+                        </p>
+
+                        <br>
+
+                        <a href="/delete_subject/{{ subject.id }}"
+                           class="btn">
+
+                            🗑 Delete Subject
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <h3>No Subjects Added Yet.</h3>
+
+                <p>
+
+                    Start by adding your first subject.
+
+                </p>
+
+            {% endif %}
+
+        </div>
+
+        <!-- Tips -->
+
+        <div class="card">
+
+            <h2>💡 Study Tip</h2>
+
+            <p>
+
+                Organize your subjects first, then create tasks under each subject for better planning.
+
+            </p>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

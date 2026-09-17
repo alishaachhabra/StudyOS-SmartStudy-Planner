@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Calendar | StudyOS</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2 class="logo">StudyOS</h2>
+
+        <ul>
+
+            <li><a href="/dashboard">🏠 Dashboard</a></li>
+
+            <li><a href="/subjects">📚 Subjects</a></li>
+
+            <li><a href="/tasks">📝 Tasks</a></li>
+
+            <li><a href="/aiplanner">🧠 Study Strategist</a></li>
+
+            <li class="active"><a href="/calendar">📅 Calendar</a></li>
+
+            <li><a href="/analytics">📊 Analytics</a></li>
+
+            <li><a href="/studycoach">💡 Study Coach</a></li>
+
+            <li><a href="/profile">👤 Profile</a></li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <h1>📅 Study Calendar</h1>
+
+            <p>Track your upcoming deadlines and stay ahead.</p>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🔥 Upcoming Deadlines</h2>
+
+            {% if tasks %}
+
+                {% for task in tasks %}
+
+                <div class="subject-card">
+
+                    <div>
+
+                        <h3>{{ task.task_name }}</h3>
+
+                        <p><strong>📚 Subject:</strong> {{ task.subject.subject_name }}</p>
+
+                        <p><strong>📅 Deadline:</strong> {{ task.deadline }}</p>
+
+                        <p><strong>⭐ Priority:</strong>
+
+                            {% if task.importance == 3 %}
+                                High
+                            {% elif task.importance == 2 %}
+                                Medium
+                            {% else %}
+                                Low
+                            {% endif %}
+
+                        </p>
+
+                        <p>
+
+                            <strong>Status:</strong>
+
+                            {% if task.status == "Completed" %}
+
+                                <span style="color:green;">Completed</span>
+
+                            {% else %}
+
+                                <span style="color:#ff9800;">Pending</span>
+
+                            {% endif %}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <br>
+
+                {% endfor %}
+
+            {% else %}
+
+                <h3>No upcoming deadlines 🎉</h3>
+
+                <p>Add tasks to see them here.</p>
+
+            {% endif %}
+
+        </div>
+
+        <div class="card">
+
+            <h2>📌 Calendar Tips</h2>
+
+            <ul>
+
+                <li>✅ Complete high-priority tasks first.</li>
+
+                <li>✅ Don't wait until the deadline day.</li>
+
+                <li>✅ Review tomorrow's schedule every evening.</li>
+
+                <li>✅ Keep weekends for revision and backlog clearance.</li>
+
+            </ul>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>
